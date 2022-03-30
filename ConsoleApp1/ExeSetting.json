@@ -1,0 +1,72 @@
+﻿{
+    //HaveFileOverTime - 是否有檔案存在, 並建立時間超過指定時間
+    //IsHaveFile - 是否有檔案存在, 並且檔名是今天 ;
+    //  "IsHaveFile": "false" => 應該沒檔案,如果檢檢查到就發信
+    //  "IsHaveFile": "true" => 應該要有檔案, 如果沒檔案就發信
+    //  "FindFilter": "" => 維持原樣, "*abc*.*" => 撈取檔名含有 abc 的檔案.
+    //DeleteFileOverTime - 刪除超過指定時效的檔案
+    //MoveFileToFtpServer - 把目錄 Path 的檔到透到FTP上, 並且成功後把檔案搬到 BakPath 目錄裡
+    "F10": {
+        "Scheduler": "HaveFileOverTime",
+        "Path": "C:\\Work\\testdata\\DC\\F00",
+        "OverTime": "15",
+        "ErrMail": "kevin79713@gmail.com",
+        "ErrDesc": "F10 檔案未轉檔"
+    },
+    "F11": {
+        "Scheduler": "IsHaveFile",
+        "Path": "C:\\Work\\testdata\\DC\\F00",
+        "OverTime": "15",
+        "IsHaveTodayFile": "false",
+        "IsHaveFile": "false",
+        "ErrMail": "kevin79713@gmail.com",
+        "ErrDesc": "F10 查無檔案, 或檔案日期錯誤",
+        "FindFilter":  ""
+    },
+    "F12": {
+        "Scheduler": "DeleteFileOverTime",
+        "Path": "C:\\Work\\testdata\\test_20180712\\DC\\F00",
+        "OverDay": "15",
+        "ErrMail": "kevin79713@gmail.com"
+    },
+    "F13": {
+        "Scheduler": "MoveFileToFtpServer",
+        "Path": "C:\\Work\\testdata\\EC\\516\\F62",
+        "FtpIp": "192.255.255.255/Test",
+        "BakPath": "C:\\Work\\testdata\\EC\\516\\F62\\bak",
+        "FtpID": "ec123",
+        "FtpPwd": "test123",
+        "FileFilter": "F62*.*",
+        "ErrMail": "kevin79713@gmail.com"
+    },
+    "DC_F04": {
+        "Scheduler": "IsHaveFile",
+        "Path": "C:\\Work\\OK-ECMS\\testdata\\DC\\F04",
+        "OverTime": "15",
+        "IsHaveTodayFile": "true",
+        "IsHaveFile": "true",
+        "ErrMail": "kevin79713@gmail.com",
+        "ErrDesc": "DC_F04 查無檔案, 或檔案日期錯誤",
+        "FindFilter": ""
+    },
+    "DC_F04_NOEXIST": {
+        "Scheduler": "IsHaveFile",
+        "Path": "C:\\Work\\testdata\\DC\\F04",
+        "OverTime": "15",
+        "IsHaveTodayFile": "false",
+        "IsHaveFile": "false",
+        "ErrMail": "kevin79713@gmail.com",
+        "ErrDesc": "DC_F04 轉檔失敗",
+        "FindFilter": ""
+    },
+    "DC_F08": {
+        "Scheduler": "IsHaveFile",
+        "Path": "C:\\Work\\testdata\\DC\\F08",
+        "OverTime": "15",
+        "IsHaveTodayFile": "true",
+        "IsHaveFile": "true",
+        "ErrMail": "kevin79713@gmail.com",
+        "ErrDesc": "DC_F08 查無檔案, 或檔案日期錯誤",
+        "FindFilter": ""
+    }
+}
